@@ -1,0 +1,22 @@
+# Operating System & Temporary Files
+.DS_Store
+Thumbs.db
+~$*
+*.tmp
+
+# Deliverable Documents (Preserved locally, excluded from clean code repo)
+*.docx
+*.pptx
+*.pdf
+
+# Scratch, intermediate dumps, and helper scripts
+Antigravity assets/
+__pycache__/
+*.pyc
+
+# C++ Build Artifacts
+*.o
+*.out
+cpp/hit2help_sim
+build/
+bin/

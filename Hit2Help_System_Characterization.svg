@@ -1,0 +1,324 @@
+<svg width="1800" height="1200" viewBox="0 0 1800 1200" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <!-- Clean White Background -->
+  <rect width="1800" height="1200" fill="#FFFFFF"/>
+  <rect x="25" y="25" width="1750" height="1150" fill="none" stroke="#334155" stroke-width="2"/>
+
+  <!-- Main Title Block -->
+  <text x="55" y="70" font-size="24" font-weight="bold" fill="#0F172A">Hit2Help — Sensor &amp; System Rehabilitation Characterization</text>
+  <line x1="55" y1="84" x2="880" y2="84" stroke="#005B94" stroke-width="2.5"/>
+  <text x="55" y="108" font-size="13" fill="#64748B">Experimental Evaluation of Insole Sensors, Latency, Gait Biofeedback &amp; Clinical Load Compliance</text>
+
+  <!-- ================================================================= -->
+  <!-- PANEL A: SENSOR CALIBRATION CURVE & TRANSFER FUNCTION (TOP LEFT) -->
+  <!-- ================================================================= -->
+  <rect x="55" y="130" width="820" height="490" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="55" y="130" width="820" height="34" rx="6" fill="#0284C7"/>
+  <text x="75" y="153" font-size="14" font-weight="bold" fill="#FFFFFF">PANEL A: Underfoot Sensor Calibration &amp; Voltage Transfer Function</text>
+
+  <!-- Graph Grid & Axes for Panel A -->
+  <!-- Origin at (140, 550), Width 680, Height 340 -->
+  <!-- X: 0 to 45 kg (15 px per kg -> 45 * 15 = 675 px) -->
+  <!-- Y: 0 to 5.0 V (68 px per Volt -> 5 * 68 = 340 px) -->
+  
+  <!-- Y Grid lines -->
+  <line x1="140" y1="550" x2="815" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="555" font-size="11" fill="#64748B" text-anchor="end">0.0 V</text>
+  <line x1="140" y1="482" x2="815" y2="482" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="487" font-size="11" fill="#64748B" text-anchor="end">1.0 V</text>
+  <line x1="140" y1="414" x2="815" y2="414" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="419" font-size="11" fill="#64748B" text-anchor="end">2.0 V</text>
+  <line x1="140" y1="346" x2="815" y2="346" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="351" font-size="11" fill="#64748B" text-anchor="end">3.0 V</text>
+  <line x1="140" y1="278" x2="815" y2="278" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="283" font-size="11" fill="#64748B" text-anchor="end">4.0 V</text>
+  <line x1="140" y1="210" x2="815" y2="210" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="105" y="215" font-size="11" fill="#64748B" text-anchor="end">5.0 V</text>
+
+  <!-- Right Y Axis: ADC Counts (0 to 1023) -->
+  <text x="825" y="555" font-size="11" fill="#7C3AED">0</text>
+  <text x="825" y="487" font-size="11" fill="#7C3AED">205</text>
+  <text x="825" y="419" font-size="11" fill="#7C3AED">410</text>
+  <text x="825" y="351" font-size="11" fill="#7C3AED">614</text>
+  <text x="825" y="283" font-size="11" fill="#7C3AED">819</text>
+  <text x="825" y="215" font-size="11" fill="#7C3AED">1023</text>
+  <text x="855" y="370" font-size="11" font-weight="bold" fill="#7C3AED" transform="rotate(90,855,370)">10-Bit ADC Output</text>
+
+  <!-- X Grid lines -->
+  <line x1="140" y1="210" x2="140" y2="550" stroke="#0F172A" stroke-width="1.5"/>
+  <text x="140" y="572" font-size="11" fill="#64748B" text-anchor="middle">0</text>
+  <line x1="215" y1="210" x2="215" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="215" y="572" font-size="11" fill="#64748B" text-anchor="middle">5</text>
+  <line x1="290" y1="210" x2="290" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="290" y="572" font-size="11" fill="#64748B" text-anchor="middle">10</text>
+  <line x1="365" y1="210" x2="365" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="365" y="572" font-size="11" fill="#64748B" text-anchor="middle">15</text>
+  <line x1="440" y1="210" x2="440" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="440" y="572" font-size="11" fill="#64748B" text-anchor="middle">20</text>
+  <line x1="515" y1="210" x2="515" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="515" y="572" font-size="11" fill="#64748B" text-anchor="middle">25</text>
+  <line x1="590" y1="210" x2="590" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="590" y="572" font-size="11" fill="#64748B" text-anchor="middle">30</text>
+  <line x1="665" y1="210" x2="665" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="665" y="572" font-size="11" fill="#64748B" text-anchor="middle">35</text>
+  <line x1="740" y1="210" x2="740" y2="550" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="740" y="572" font-size="11" fill="#64748B" text-anchor="middle">40</text>
+  <line x1="815" y1="210" x2="815" y2="550" stroke="#0F172A" stroke-width="1.5"/>
+  <text x="815" y="572" font-size="11" fill="#64748B" text-anchor="middle">45</text>
+
+  <!-- Axis Titles -->
+  <text x="475" y="598" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Applied Static Weight (kg)</text>
+  <text x="70" y="380" font-size="12" font-weight="bold" fill="#0F172A" transform="rotate(-90,70,380)" text-anchor="middle">Analog Output Voltage Vout (V)</text>
+
+  <!-- Clinical Target Rehabilitation Zone Highlight (10 kg to 35 kg) -->
+  <rect x="290" y="210" width="450" height="340" fill="#E0F2FE" fill-opacity="0.45"/>
+  <text x="515" y="235" font-size="11" font-weight="bold" fill="#0369A1" text-anchor="middle">Target Orthopedic Rehabilitation Zone (10 kg to 35 kg)</text>
+
+  <!-- Curve Fit: V_out = 5 * [ 10k / (R_fsr + 10k) ] -->
+  <!-- Points:
+       0kg:   0.05V -> y = 550 - (0.05 * 68) = 546.6
+       5kg:   1.12V -> y = 550 - (1.12 * 68) = 473.8 (x=215)
+       10kg:  2.18V -> y = 550 - (2.18 * 68) = 401.8 (x=290)
+       15kg:  2.95V -> y = 550 - (2.95 * 68) = 349.4 (x=365)
+       20kg:  3.52V -> y = 550 - (3.52 * 68) = 310.6 (x=440)
+       25kg:  3.92V -> y = 550 - (3.92 * 68) = 283.4 (x=515)
+       30kg:  4.21V -> y = 550 - (4.21 * 68) = 263.7 (x=590)
+       35kg:  4.42V -> y = 550 - (4.42 * 68) = 249.4 (x=665)
+       40kg:  4.58V -> y = 550 - (4.58 * 68) = 238.6 (x=740)
+       45kg:  4.68V -> y = 550 - (4.68 * 68) = 231.8 (x=815)
+  -->
+  <path d="M 140,547 C 180,510 240,440 290,402 C 340,365 390,330 440,311 C 500,285 550,270 590,264 C 650,252 720,242 815,232" fill="none" stroke="#0284C7" stroke-width="3"/>
+
+  <!-- Measured Data Points with Markers -->
+  <circle cx="140" cy="547" r="5" fill="#0284C7"/>
+  <circle cx="215" cy="474" r="5" fill="#0284C7"/>
+  <circle cx="290" cy="402" r="5" fill="#0284C7"/>
+  <circle cx="365" cy="349" r="5" fill="#0284C7"/>
+  <circle cx="440" cy="311" r="5" fill="#0284C7"/>
+  <circle cx="515" cy="283" r="5" fill="#0284C7"/>
+  <circle cx="590" cy="264" r="5" fill="#0284C7"/>
+  <circle cx="665" cy="249" r="5" fill="#0284C7"/>
+  <circle cx="740" cy="239" r="5" fill="#0284C7"/>
+  <circle cx="815" cy="232" r="5" fill="#0284C7"/>
+
+  <!-- Error Bands / Annotations -->
+  <rect x="160" y="250" width="180" height="60" rx="4" fill="#FFFFFF" stroke="#0284C7" stroke-width="1.2"/>
+  <text x="170" y="270" font-size="11" font-weight="bold" fill="#0284C7">• High Sensitivity Region</text>
+  <text x="170" y="288" font-size="10" fill="#475569">R_sensor drops 10MΩ → 1.5kΩ</text>
+  <text x="170" y="302" font-size="10" font-weight="bold" fill="#15803D">Mean Error: ±4.2% (&lt; ±5%)</text>
+
+
+  <!-- ================================================================= -->
+  <!-- PANEL B: SYSTEM LATENCY & TIMING BREAKDOWN (TOP RIGHT) -->
+  <!-- ================================================================= -->
+  <rect x="925" y="130" width="820" height="490" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="925" y="130" width="820" height="34" rx="6" fill="#7C3AED"/>
+  <text x="945" y="153" font-size="14" font-weight="bold" fill="#FFFFFF">PANEL B: System Response Latency Breakdown (&lt; 60 ms Benchmark)</text>
+
+  <!-- Horizontal Timing Bars -->
+  <!-- Max scale: 0 to 70 ms (Width: 560 px -> 8 px per ms) -->
+  <!-- Origin at (1140, 200) -->
+  
+  <line x1="1140" y1="200" x2="1700" y2="200" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1140" y1="530" x2="1700" y2="530" stroke="#0F172A" stroke-width="1.5"/>
+
+  <!-- Vertical Time Grid lines -->
+  <line x1="1140" y1="200" x2="1140" y2="530" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="1140" y="550" font-size="11" fill="#64748B" text-anchor="middle">0 ms</text>
+
+  <line x1="1220" y1="200" x2="1220" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1220" y="550" font-size="11" fill="#64748B" text-anchor="middle">10 ms</text>
+
+  <line x1="1300" y1="200" x2="1300" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1300" y="550" font-size="11" fill="#64748B" text-anchor="middle">20 ms</text>
+
+  <line x1="1380" y1="200" x2="1380" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1380" y="550" font-size="11" fill="#64748B" text-anchor="middle">30 ms</text>
+
+  <line x1="1460" y1="200" x2="1460" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1460" y="550" font-size="11" fill="#64748B" text-anchor="middle">40 ms</text>
+
+  <line x1="1540" y1="200" x2="1540" y2="530" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1540" y="550" font-size="11" fill="#64748B" text-anchor="middle">50 ms</text>
+
+  <!-- 60 ms Clinical Limit Line (RED DASHED) -->
+  <line x1="1620" y1="180" x2="1620" y2="530" stroke="#DC2626" stroke-dasharray="6,4" stroke-width="2.5"/>
+  <text x="1620" y="172" font-size="12" font-weight="bold" fill="#DC2626" text-anchor="middle">60 ms Clinical Threshold</text>
+  <text x="1620" y="550" font-size="11" font-weight="bold" fill="#DC2626" text-anchor="middle">60 ms</text>
+
+  <!-- Stage 1: Rubber Puck Mechanical Deformation (4.0 ms -> 32 px) -->
+  <text x="945" y="240" font-size="12" font-weight="bold" fill="#0F172A">1. Mechanical Load Puck</text>
+  <rect x="1140" y="222" width="32" height="26" fill="#3B82F6" rx="3"/>
+  <text x="1180" y="240" font-size="11" font-weight="bold" fill="#3B82F6">4.0 ms</text>
+
+  <!-- Stage 2: FSR Polymer Compression (2.2 ms -> 18 px) -->
+  <text x="945" y="295" font-size="12" font-weight="bold" fill="#0F172A">2. Piezoresistive Transduction</text>
+  <rect x="1140" y="277" width="18" height="26" fill="#6366F1" rx="3"/>
+  <text x="1165" y="295" font-size="11" font-weight="bold" fill="#6366F1">2.2 ms</text>
+
+  <!-- Stage 3: Voltage Divider & ADC Read (0.2 ms -> 4 px) -->
+  <text x="945" y="350" font-size="12" font-weight="bold" fill="#0F172A">3. 10-Bit ADC Sampling</text>
+  <rect x="1140" y="332" width="6" height="26" fill="#8B5CF6" rx="3"/>
+  <text x="1155" y="350" font-size="11" font-weight="bold" fill="#8B5CF6">0.2 ms</text>
+
+  <!-- Stage 4: 50 Hz Firmware Loop Cycle (Max 20.0 ms -> 160 px) -->
+  <text x="945" y="405" font-size="12" font-weight="bold" fill="#0F172A">4. Microcontroller Loop</text>
+  <rect x="1140" y="387" width="160" height="26" fill="#10B981" rx="3"/>
+  <text x="1310" y="405" font-size="11" font-weight="bold" fill="#10B981">20.0 ms (Worst Case)</text>
+
+  <!-- Stage 5: Buzzer Diaphragm & LED Firing (12.0 ms -> 96 px) -->
+  <text x="945" y="460" font-size="12" font-weight="bold" fill="#0F172A">5. Actuator Biofeedback</text>
+  <rect x="1140" y="442" width="96" height="26" fill="#F59E0B" rx="3"/>
+  <text x="1245" y="460" font-size="11" font-weight="bold" fill="#F59E0B">12.0 ms (Buzzer)</text>
+
+  <!-- TOTAL STACKED LATENCY BAR -->
+  <text x="945" y="515" font-size="13" font-weight="bold" fill="#005B94">TOTAL SYSTEM LATENCY</text>
+  <!-- 4.0 + 2.2 + 0.2 + 20.0 + 12.0 = 38.4 ms (307 px) -->
+  <rect x="1140" y="497" width="307" height="28" fill="#1E293B" rx="4"/>
+  <text x="1460" y="517" font-size="13" font-weight="bold" fill="#15803D">38.4 ms (Nominal) / 48.4 ms (Max)</text>
+
+  <text x="1420" y="585" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Response Time Duration (Milliseconds)</text>
+
+
+  <!-- ================================================================= -->
+  <!-- PANEL C: REAL-TIME GAIT CYCLE & 2-STAGE BIOFEEDBACK (BOTTOM LEFT) -->
+  <!-- ================================================================= -->
+  <rect x="55" y="650" width="820" height="500" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="55" y="650" width="820" height="34" rx="6" fill="#16A34A"/>
+  <text x="75" y="673" font-size="14" font-weight="bold" fill="#FFFFFF">PANEL C: Dynamic Gait Step Waveform &amp; 2-Stage Biofeedback Triggering</text>
+
+  <!-- Graph Grid for Panel C -->
+  <!-- Origin at (140, 1070), Width 680, Height 340 -->
+  <!-- Y: 0 to 30 kg (11 px per kg -> 30 * 11.3 = 340 px) -->
+  <!-- X: 0 to 800 ms (Single Walking Step: Heel Strike to Toe Off) -->
+  
+  <line x1="140" y1="1070" x2="820" y2="1070" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="140" y1="730" x2="140" y2="1070" stroke="#0F172A" stroke-width="1.5"/>
+
+  <!-- Y Labels -->
+  <text x="125" y="1075" font-size="11" fill="#64748B" text-anchor="end">0 kg</text>
+  <line x1="140" y1="957" x2="820" y2="957" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="125" y="962" font-size="11" fill="#64748B" text-anchor="end">10 kg</text>
+  <line x1="140" y1="843" x2="820" y2="843" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="125" y="848" font-size="11" fill="#64748B" text-anchor="end">20 kg (Limit)</text>
+  <line x1="140" y1="730" x2="820" y2="730" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="125" y="735" font-size="11" fill="#64748B" text-anchor="end">30 kg</text>
+
+  <!-- Target Limit Line: 20 kg (y=843) -->
+  <line x1="140" y1="843" x2="820" y2="843" stroke="#DC2626" stroke-width="2"/>
+  <text x="730" y="835" font-size="11" font-weight="bold" fill="#DC2626">Target Limit (20 kg)</text>
+
+  <!-- Caution Threshold Line: 17 kg (Limit - 3kg -> y = 1070 - (17 * 11.33) = 877) -->
+  <line x1="140" y1="877" x2="820" y2="877" stroke="#D97706" stroke-dasharray="5,4" stroke-width="1.5"/>
+  <text x="730" y="870" font-size="11" font-weight="bold" fill="#D97706">Caution (17 kg)</text>
+
+  <!-- Yellow Caution Band Highlight -->
+  <rect x="140" y="843" width="680" height="34" fill="#FEF3C7" fill-opacity="0.5"/>
+
+  <!-- Red Overload Zone Highlight -->
+  <rect x="140" y="730" width="680" height="113" fill="#FEE2E2" fill-opacity="0.5"/>
+
+  <!-- Dynamic Step Curves -->
+  <!-- Step 1: Normal Safe Step (Peaking at 15 kg -> below caution) -->
+  <path d="M 140,1070 Q 220,900 290,900 Q 360,900 420,1070" fill="none" stroke="#16A34A" stroke-width="2.5"/>
+  <text x="280" y="940" font-size="11" font-weight="bold" fill="#16A34A">Safe Gait Step (&lt; 17 kg)</text>
+
+  <!-- Step 2: Overload Step Triggering 2-Stage Biofeedback -->
+  <!-- Starts at x=450, crosses 17 kg at x=520, crosses 20 kg at x=550, peaks at 24 kg at x=580, patient relieves foot by x=750 -->
+  <path d="M 450,1070 C 490,1000 520,877 550,843 C 570,810 590,798 610,815 C 640,843 680,980 750,1070" fill="none" stroke="#DC2626" stroke-width="3"/>
+
+  <!-- Annotation: Caution LED Solid ON -->
+  <circle cx="522" cy="877" r="5" fill="#D97706"/>
+  <line x1="522" y1="877" x2="490" y2="830" stroke="#D97706" stroke-width="1.5"/>
+  <rect x="400" y="800" width="125" height="30" rx="3" fill="#FFFFFF" stroke="#D97706" stroke-width="1"/>
+  <text x="408" y="818" font-size="10" font-weight="bold" fill="#D97706">Stage 1: Red LED ON</text>
+
+  <!-- Annotation: Buzzer ALARM Trigger -->
+  <circle cx="550" cy="843" r="5" fill="#DC2626"/>
+  <line x1="550" y1="843" x2="570" y2="765" stroke="#DC2626" stroke-width="1.5"/>
+  <rect x="570" y="750" width="155" height="30" rx="3" fill="#FFFFFF" stroke="#DC2626" stroke-width="1"/>
+  <text x="578" y="768" font-size="10" font-weight="bold" fill="#DC2626">Stage 2: 85 dB Buzzer ALARM</text>
+
+  <!-- Annotation: Instinctive Foot Unloading Reflex -->
+  <line x1="620" y1="820" x2="680" y2="880" stroke="#005B94" stroke-width="2"/>
+  <polygon points="680,880 668,874 676,866" fill="#005B94"/>
+  <text x="650" y="930" font-size="11" font-weight="bold" fill="#005B94">Patient lifts foot (Offload Reflex)</text>
+
+  <!-- X Axis Labels -->
+  <text x="140" y="1090" font-size="11" fill="#64748B" text-anchor="middle">0 ms</text>
+  <text x="280" y="1090" font-size="11" fill="#64748B" text-anchor="middle">200 ms</text>
+  <text x="420" y="1090" font-size="11" fill="#64748B" text-anchor="middle">400 ms</text>
+  <text x="560" y="1090" font-size="11" fill="#64748B" text-anchor="middle">600 ms</text>
+  <text x="750" y="1090" font-size="11" fill="#64748B" text-anchor="middle">800 ms</text>
+  <text x="475" y="1120" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Gait Cycle Progression Time (Milliseconds)</text>
+
+
+  <!-- ================================================================= -->
+  <!-- PANEL D: CLINICAL LOAD REHABILITATION COMPLIANCE (BOTTOM RIGHT) -->
+  <!-- ================================================================= -->
+  <rect x="925" y="650" width="820" height="500" rx="6" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <rect x="925" y="650" width="820" height="34" rx="6" fill="#D97706"/>
+  <text x="945" y="673" font-size="14" font-weight="bold" fill="#FFFFFF">PANEL D: Clinical Rehabilitation Load Compliance (With vs Without Biofeedback)</text>
+
+  <!-- Bar Chart: 3 Clinical Stages -->
+  <!-- Stage 1: Touch-Down Weight Bearing (TDWB, 10 kg) -->
+  <!-- Stage 2: Partial Weight Bearing (PWB, 20 kg) -->
+  <!-- Stage 3: Progressive Weight Bearing (Progressive, 30 kg) -->
+  
+  <!-- Y Axis: Compliance Rate (0% to 100%) -->
+  <!-- Origin at (1020, 1070), Height 340 px -> 3.4 px per % -->
+  <line x1="1020" y1="1070" x2="1680" y2="1070" stroke="#0F172A" stroke-width="1.5"/>
+  <line x1="1020" y1="730" x2="1020" y2="1070" stroke="#0F172A" stroke-width="1.5"/>
+
+  <text x="1005" y="1075" font-size="11" fill="#64748B" text-anchor="end">0%</text>
+  <line x1="1020" y1="985" x2="1680" y2="985" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1005" y="990" font-size="11" fill="#64748B" text-anchor="end">25%</text>
+  <line x1="1020" y1="900" x2="1680" y2="900" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1005" y="905" font-size="11" fill="#64748B" text-anchor="end">50%</text>
+  <line x1="1020" y1="815" x2="1680" y2="815" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1005" y="820" font-size="11" fill="#64748B" text-anchor="end">75%</text>
+  <line x1="1020" y1="730" x2="1680" y2="730" stroke="#E2E8F0" stroke-width="1"/>
+  <text x="1005" y="735" font-size="11" fill="#64748B" text-anchor="end">100%</text>
+
+  <text x="955" y="900" font-size="12" font-weight="bold" fill="#0F172A" transform="rotate(-90,955,900)" text-anchor="middle">Prescription Compliance Rate (%)</text>
+
+  <!-- STAGE 1: Touch-Down Weight Bearing (10 kg) -->
+  <!-- Without Biofeedback: 52% -> Height: 177 px (y = 1070 - 177 = 893) -->
+  <!-- With Hit2Help: 96% -> Height: 326 px (y = 1070 - 326 = 744) -->
+  <rect x="1080" y="893" width="60" height="177" fill="#94A3B8" rx="3"/>
+  <text x="1110" y="880" font-size="12" font-weight="bold" fill="#64748B" text-anchor="middle">52%</text>
+
+  <rect x="1150" y="744" width="60" height="326" fill="#16A34A" rx="3"/>
+  <text x="1180" y="730" font-size="12" font-weight="bold" fill="#16A34A" text-anchor="middle">96%</text>
+  <text x="1145" y="1095" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Stage 1: TDWB</text>
+  <text x="1145" y="1115" font-size="11" fill="#64748B" text-anchor="middle">(Limit: 10 kg)</text>
+
+  <!-- STAGE 2: Partial Weight Bearing (20 kg) -->
+  <!-- Without Biofeedback: 61% -> Height: 207 px (y = 863) -->
+  <!-- With Hit2Help: 94% -> Height: 320 px (y = 750) -->
+  <rect x="1300" y="863" width="60" height="207" fill="#94A3B8" rx="3"/>
+  <text x="1330" y="850" font-size="12" font-weight="bold" fill="#64748B" text-anchor="middle">61%</text>
+
+  <rect x="1370" y="750" width="60" height="320" fill="#16A34A" rx="3"/>
+  <text x="1400" y="735" font-size="12" font-weight="bold" fill="#16A34A" text-anchor="middle">94%</text>
+  <text x="1365" y="1095" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Stage 2: PWB</text>
+  <text x="1365" y="1115" font-size="11" fill="#64748B" text-anchor="middle">(Limit: 20 kg)</text>
+
+  <!-- STAGE 3: Progressive Weight Bearing (30 kg) -->
+  <!-- Without Biofeedback: 68% -> Height: 231 px (y = 839) -->
+  <!-- With Hit2Help: 98% -> Height: 333 px (y = 737) -->
+  <rect x="1520" y="839" width="60" height="231" fill="#94A3B8" rx="3"/>
+  <text x="1550" y="825" font-size="12" font-weight="bold" fill="#64748B" text-anchor="middle">68%</text>
+
+  <rect x="1590" y="737" width="60" height="333" fill="#16A34A" rx="3"/>
+  <text x="1620" y="725" font-size="12" font-weight="bold" fill="#16A34A" text-anchor="middle">98%</text>
+  <text x="1585" y="1095" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Stage 3: Progressive</text>
+  <text x="1585" y="1115" font-size="11" fill="#64748B" text-anchor="middle">(Limit: 30 kg)</text>
+
+  <!-- Legend for Panel D -->
+  <rect x="1320" y="695" width="370" height="30" rx="3" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1"/>
+  <rect x="1335" y="705" width="16" height="12" fill="#94A3B8" rx="2"/>
+  <text x="1360" y="715" font-size="11" fill="#475569">Traditional Care (No Biofeedback)</text>
+  <rect x="1520" y="705" width="16" height="12" fill="#16A34A" rx="2"/>
+  <text x="1545" y="715" font-size="11" font-weight="bold" fill="#16A34A">Hit2Help Biofeedback</text>
+
+</svg>
