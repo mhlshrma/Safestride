@@ -44,12 +44,13 @@ const int PIN_LED    = 11;
 // --- SYSTEM STATE & LIMITS ---
 bool systemArmed = true; // Auto-active on power-on
 
-float targetLimit = 15.0;      // Default testing limit: 5.0 kg
-const float MAX_LIMIT = 19.5; // Absolute ceiling: 19.5 kg
-const float MIN_LIMIT = 3.5;  // Minimum threshold
+float targetLimit = 5.0;       // Default limit: 5.0 kg
+const float MAX_LIMIT = 19.5;  // Absolute ceiling: 19.5 kg
+const float MIN_LIMIT = 3.5;   // Minimum threshold
 
-const float LIGHT_MARGIN = 3.0; // Light turns on 3.0 kg before limit
-const float BUZZ_MARGIN  = 2.0; // Buzz warning starts 2.0 kg before limit
+const float LIGHT_MARGIN = 3.0; // Light turns on 3.0 kg before limit (e.g. at 2.0 kg when limit is 5.0)
+const float BUZZ_MARGIN  = 2.0; // Buzz warning starts 2.0 kg before limit (e.g. at 3.0 kg)
+const float HYSTERESIS   = 0.20; // 0.20 kg deadband prevents boundary jitter/flicker
 
 // --- BUTTON DEBOUNCE TRACKING ---
 int lastBtnOYState = HIGH;
@@ -201,10 +202,12 @@ void loop() {
   // 3. 50 Hz BARE-METAL SENSING & MULTI-STAGE BIOFEEDBACK
   static int rawHeel = 0;
   static int rawForefoot = 0;
+  static float filteredHeel = 0.0;
+  static float filteredForefoot = 0.0;
   static float weightHeel = 0.0;
   static float weightForefoot = 0.0;
   static float totalWeight = 0.0;
-  static const char* systemState = "SAFE";
+  static const char* systemState = "SAFE     ";
 
   if (currentMillis - prevLoopMillis >= LOOP_INTERVAL) {
     prevLoopMillis = currentMillis;
@@ -212,36 +215,70 @@ void loop() {
     rawHeel     = analogRead(PIN_FSR_HEEL);
     rawForefoot = analogRead(PIN_FSR_FOREFOOT);
 
-    weightHeel     = adcToKg(rawHeel);
-    weightForefoot = adcToKg(rawForefoot);
+    // Exponential Moving Average filter to eliminate ADC voltage noise
+    if (filteredHeel <= 0.01 && rawHeel > 0) filteredHeel = rawHeel;
+    else filteredHeel = 0.75 * filteredHeel + 0.25 * (float)rawHeel;
+
+    if (filteredForefoot <= 0.01 && rawForefoot > 0) filteredForefoot = rawForefoot;
+    else filteredForefoot = 0.75 * filteredForefoot + 0.25 * (float)rawForefoot;
+
+    weightHeel     = adcToKg((int)(filteredHeel + 0.5));
+    weightForefoot = adcToKg((int)(filteredForefoot + 0.5));
     totalWeight    = weightHeel + weightForefoot;
 
     if (systemArmed) {
       float lightThreshold = targetLimit - LIGHT_MARGIN; // e.g. 2.0 kg
       float buzzThreshold  = targetLimit - BUZZ_MARGIN;  // e.g. 3.0 kg
 
-      // STAGE 3: OVERLOAD REACHED (>= Target Limit)
-      if (totalWeight >= targetLimit) {
-        systemState = "OVERLOAD!";
+      // State machine with Schmitt Trigger Hysteresis to eliminate boundary flickering
+      if (strcmp(systemState, "OVERLOAD!") == 0) {
+        if (totalWeight < (lightThreshold - HYSTERESIS)) {
+          systemState = "SAFE     ";
+        } else if (totalWeight < (buzzThreshold - HYSTERESIS)) {
+          systemState = "CAUTION  ";
+        } else if (totalWeight < (targetLimit - HYSTERESIS)) {
+          systemState = "BUZZ WARN";
+        }
+      } else if (strcmp(systemState, "BUZZ WARN") == 0) {
+        if (totalWeight >= targetLimit) {
+          systemState = "OVERLOAD!";
+        } else if (totalWeight < (lightThreshold - HYSTERESIS)) {
+          systemState = "SAFE     ";
+        } else if (totalWeight < (buzzThreshold - HYSTERESIS)) {
+          systemState = "CAUTION  ";
+        }
+      } else if (strcmp(systemState, "CAUTION  ") == 0) {
+        if (totalWeight >= targetLimit) {
+          systemState = "OVERLOAD!";
+        } else if (totalWeight >= buzzThreshold) {
+          systemState = "BUZZ WARN";
+        } else if (totalWeight < (lightThreshold - HYSTERESIS)) {
+          systemState = "SAFE     ";
+        }
+      } else { // SAFE or initial
+        if (totalWeight >= targetLimit) {
+          systemState = "OVERLOAD!";
+        } else if (totalWeight >= buzzThreshold) {
+          systemState = "BUZZ WARN";
+        } else if (totalWeight >= lightThreshold) {
+          systemState = "CAUTION  ";
+        } else {
+          systemState = "SAFE     ";
+        }
+      }
+
+      // Actuator Outputs based on stable hysteresis state
+      if (strcmp(systemState, "OVERLOAD!") == 0) {
         digitalWrite(PIN_LED, HIGH);
         buzzerSound(true, 2800); // 2.8 kHz continuous alarm
-      }
-      // STAGE 2: BUZZ BEFORE 2 KG (>= Limit - 2.0 kg)
-      else if (totalWeight >= buzzThreshold) {
-        systemState = "BUZZ WARN";
+      } else if (strcmp(systemState, "BUZZ WARN") == 0) {
         digitalWrite(PIN_LED, HIGH);
         bool beepPulse = ((currentMillis / 80) % 2 == 0);
         buzzerSound(beepPulse, 2200); // 2.2 kHz pulsing warning
-      }
-      // STAGE 1: LIGHT BEFORE 3 KG (>= Limit - 3.0 kg)
-      else if (totalWeight >= lightThreshold) {
-        systemState = "CAUTION  ";
+      } else if (strcmp(systemState, "CAUTION  ") == 0) {
         digitalWrite(PIN_LED, HIGH);
         buzzerSound(false);
-      }
-      // SAFE ZONE
-      else {
-        systemState = "SAFE     ";
+      } else {
         digitalWrite(PIN_LED, LOW);
         buzzerSound(false);
       }

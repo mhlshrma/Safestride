@@ -91,12 +91,13 @@ public:
     static constexpr float MAX_LIMIT     = 19.5f;
     static constexpr float LIGHT_MARGIN  = 3.0f; // Visual LED warning margin (kg)
     static constexpr float BUZZ_MARGIN   = 2.0f; // Auditory buzzer warning margin (kg)
+    static constexpr float HYSTERESIS    = 0.20f; // 200g deadband prevents boundary jitter/flicker
 
 private:
     FSRSensor heelSensor_{"Heel (A0)"};
     FSRSensor forefootSensor_{"Forefoot (A1)"};
 
-    float targetLimit_{5.0f}; // Default target limit (kg)
+    float targetLimit_{5.0f}; // Default target limit: 5.0 kg
     bool isArmed_{true};
     AlertState currentState_{AlertState::SAFE};
 
@@ -148,34 +149,74 @@ public:
         }
 
         float totalWeight = getTotalWeightKg();
-        float lightThreshold = targetLimit_ - LIGHT_MARGIN;
-        float buzzThreshold  = targetLimit_ - BUZZ_MARGIN;
+        float lightThreshold = targetLimit_ - LIGHT_MARGIN; // e.g. 2.0 kg
+        float buzzThreshold  = targetLimit_ - BUZZ_MARGIN;  // e.g. 3.0 kg
 
-        if (totalWeight >= targetLimit_) {
-            // Stage 3: Overload reached (>= Target Limit)
-            currentState_ = AlertState::OVERLOAD;
-            ledState_ = true;
-            buzzerState_ = true;
-            buzzerFrequencyHz_ = 2800; // 2.8 kHz continuous alarm
-        } else if (totalWeight >= buzzThreshold) {
-            // Stage 2: Warning zone (>= Target Limit - 2.0 kg)
-            currentState_ = AlertState::BUZZ_WARN;
-            ledState_ = true;
-            bool pulse = ((currentMillis / 80) % 2 == 0);
-            buzzerState_ = pulse;
-            buzzerFrequencyHz_ = 2200; // 2.2 kHz pulsing warning
-        } else if (totalWeight >= lightThreshold) {
-            // Stage 1: Caution zone (>= Target Limit - 3.0 kg)
-            currentState_ = AlertState::CAUTION;
-            ledState_ = true;
-            buzzerState_ = false;
-            buzzerFrequencyHz_ = 0;
-        } else {
-            // Safe Zone
-            currentState_ = AlertState::SAFE;
-            ledState_ = false;
-            buzzerState_ = false;
-            buzzerFrequencyHz_ = 0;
+        // Schmitt Trigger Hysteresis to completely stop boundary flickering
+        switch (currentState_) {
+            case AlertState::OVERLOAD:
+                if (totalWeight < (lightThreshold - HYSTERESIS)) {
+                    currentState_ = AlertState::SAFE;
+                } else if (totalWeight < (buzzThreshold - HYSTERESIS)) {
+                    currentState_ = AlertState::CAUTION;
+                } else if (totalWeight < (targetLimit_ - HYSTERESIS)) {
+                    currentState_ = AlertState::BUZZ_WARN;
+                }
+                break;
+            case AlertState::BUZZ_WARN:
+                if (totalWeight >= targetLimit_) {
+                    currentState_ = AlertState::OVERLOAD;
+                } else if (totalWeight < (lightThreshold - HYSTERESIS)) {
+                    currentState_ = AlertState::SAFE;
+                } else if (totalWeight < (buzzThreshold - HYSTERESIS)) {
+                    currentState_ = AlertState::CAUTION;
+                }
+                break;
+            case AlertState::CAUTION:
+                if (totalWeight >= targetLimit_) {
+                    currentState_ = AlertState::OVERLOAD;
+                } else if (totalWeight >= buzzThreshold) {
+                    currentState_ = AlertState::BUZZ_WARN;
+                } else if (totalWeight < (lightThreshold - HYSTERESIS)) {
+                    currentState_ = AlertState::SAFE;
+                }
+                break;
+            default: // SAFE
+                if (totalWeight >= targetLimit_) {
+                    currentState_ = AlertState::OVERLOAD;
+                } else if (totalWeight >= buzzThreshold) {
+                    currentState_ = AlertState::BUZZ_WARN;
+                } else if (totalWeight >= lightThreshold) {
+                    currentState_ = AlertState::CAUTION;
+                } else {
+                    currentState_ = AlertState::SAFE;
+                }
+                break;
+        }
+
+        // Output actuators based on stable state
+        switch (currentState_) {
+            case AlertState::OVERLOAD:
+                ledState_ = true;
+                buzzerState_ = true;
+                buzzerFrequencyHz_ = 2800; // 2.8 kHz continuous alarm
+                break;
+            case AlertState::BUZZ_WARN:
+                ledState_ = true;
+                buzzerState_ = ((currentMillis / 80) % 2 == 0);
+                buzzerFrequencyHz_ = 2200; // 2.2 kHz pulsing warning
+                break;
+            case AlertState::CAUTION:
+                ledState_ = true;
+                buzzerState_ = false;
+                buzzerFrequencyHz_ = 0;
+                break;
+            case AlertState::SAFE:
+            case AlertState::STANDBY:
+                ledState_ = false;
+                buzzerState_ = false;
+                buzzerFrequencyHz_ = 0;
+                break;
         }
     }
 
