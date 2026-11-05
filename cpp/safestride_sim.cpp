@@ -7,7 +7,7 @@
 #include <cstdio>
 
 // ============================================================================
-// PROJECT: Hit2Help / SafeStride Rehabilitation Trainer
+// PROJECT: SafeStride Rehabilitation Trainer
 // ARCHITECTURE: Object-Oriented C++17 Hardware Abstraction & System Model
 // ============================================================================
 
@@ -238,7 +238,7 @@ public:
         line2.resize(16, ' ');
 
         if (!isArmed_) {
-            line1 = "Hit2Help Paused ";
+            line1 = "SafeStride Pause";
             line2 = "Press OY+BR Start";
             return;
         }
@@ -273,7 +273,7 @@ public:
 // ============================================================================
 int main() {
     std::cout << "======================================================================\n";
-    std::cout << "  HIT2HELP / SAFESTRIDE REHABILITATION TRAINER (C++17 SIMULATION)     \n";
+    std::cout << "  SAFESTRIDE REHABILITATION TRAINER (C++17 SYSTEM SIMULATION)        \n";
     std::cout << "  Conductance Calibration Model: RP-C30-ST Datasheet Curve           \n";
     std::cout << "======================================================================\n\n";
 

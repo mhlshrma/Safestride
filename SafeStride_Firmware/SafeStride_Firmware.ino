@@ -1,6 +1,6 @@
 /*
  * =====================================================================
- * PROJECT: Hit2Help / SafeStride Rehabilitation Trainer
+ * PROJECT: SafeStride Rehabilitation Trainer
  * CONTROLLER: Arduino Uno R3 (ATmega328P, 5V, 16 MHz)
  * TEAM: Nexora | ENGG101 Introduction to Engineering | Bennett University
  * =====================================================================
@@ -132,14 +132,14 @@ void setup() {
 
   // Welcome Screen
   lcd.setCursor(0, 0);
-  lcd.print("Hit2Help Active ");
+  lcd.print("SafeStride Live ");
   lcd.setCursor(0, 1);
   lcd.print("Limit: 5.0kg Set");
   delay(800);
   lcd.clear();
 
   Serial.println("==================================================================");
-  Serial.println("HIT2HELP REHABILITATION TRAINER - CALIBRATED & ACTIVE");
+  Serial.println("SAFESTRIDE REHABILITATION TRAINER - CALIBRATED & ACTIVE");
   Serial.println("RP-C30-ST Datasheet Conductance Model Active: G = (ADC)/(10k*(1023-ADC))");
   Serial.println("Target Limit: 5.0 kg | Light @ 2.0 kg | Buzzer @ 3.0 kg");
   Serial.println("==================================================================");
@@ -307,7 +307,7 @@ void loop() {
       if (tlFrac >= 10) { tlWhole++; tlFrac = 0; }
       snprintf(row1, sizeof(row1), "L:%2d.%1d %-9s", tlWhole, tlFrac, systemState);
     } else {
-      snprintf(row0, sizeof(row0), "Hit2Help Paused ");
+      snprintf(row0, sizeof(row0), "SafeStride Pause");
       snprintf(row1, sizeof(row1), "Press OY+BR Start");
     }
 

@@ -1,7 +1,7 @@
 CXX = clang++
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
-TARGET = hit2help_sim
-SRC = hit2help_sim.cpp
+TARGET = safestride_sim
+SRC = safestride_sim.cpp
 
 all: $(TARGET)
 

@@ -1,4 +1,4 @@
-# SafeStride (Hit2Help)
+# SafeStride
 ### Intelligent Partial Weight-Bearing (PWB) Rehabilitation Trainer
 
 [![C++17](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://isocpp.org/)
@@ -22,6 +22,7 @@
 [ Arduino Uno R3 (ATmega328P) ] ◄── [ Dual Pushbuttons (D8/D9) ]
    - 50 Hz Bare-Metal Polling
    - Conductance Transfer Model
+   - EMA Filtering & Schmitt-Trigger Hysteresis
                │
        ┌───────┴────────────────────────┐
        ▼                                ▼
@@ -39,9 +40,9 @@ SafeStride delivers progressive sensory cues to prevent patient overload:
 | State | Condition | Visual Indicator (LED) | Auditory Feedback (Buzzer) |
 |---|---|---|---|
 | **SAFE** | $\text{Weight} < (\text{Limit} - 3.0\text{ kg})$ | OFF | OFF |
-| **CAUTION** | $\text{Weight} \ge (\text{Limit} - 3.0\text{ kg})$ | ON | OFF |
-| **BUZZ WARN** | $\text{Weight} \ge (\text{Limit} - 2.0\text{ kg})$ | ON | Pulsing Beep (2.2 kHz, 80 ms cycle) |
-| **OVERLOAD!** | $\text{Weight} \ge \text{Target Limit}$ | ON | Continuous Alarm (2.8 kHz) |
+| **CAUTION** | $\text{Weight} \ge (\text{Limit} - 3.0\text{ kg})$ | Solid ON (Hysteresis Filtered) | OFF |
+| **BUZZ WARN** | $\text{Weight} \ge (\text{Limit} - 2.0\text{ kg})$ | Solid ON | Pulsing Beep (2.2 kHz, 80 ms cycle) |
+| **OVERLOAD!** | $\text{Weight} \ge \text{Target Limit}$ | Solid ON | Continuous Alarm (2.8 kHz) |
 | **STANDBY** | Dual Button Press (OY + BR) | OFF | OFF (System Paused) |
 
 ---
@@ -59,7 +60,7 @@ SafeStride uses **RP-C30-ST** force-sensitive resistors configured in a voltage 
 
 3. **Datasheet Calibrated Force Function**:
    $$\text{Weight (kg)} = (G - 0.104) \times 20.0 \text{ kg}$$
-   *(Includes baseline noise filtering below 0.15 kg and 20.0 kg saturation clamping)*
+   *(Includes baseline noise filtering below 0.15 kg, EMA software filtering, and 20.0 kg saturation clamping)*
 
 ---
 
@@ -83,12 +84,12 @@ SafeStride uses **RP-C30-ST** force-sensitive resistors configured in a voltage 
 
 ```
 safestride/
-├── README.md                          # Project documentation
+├── README.md                          # SafeStride project documentation
 ├── .gitignore                         # Git exclusion rules
-├── Hit2Help_Firmware/
-│   └── Hit2Help_Firmware.ino          # Arduino Uno R3 production firmware
+├── SafeStride_Firmware/
+│   └── SafeStride_Firmware.ino        # Arduino Uno R3 production firmware
 ├── cpp/
-│   ├── hit2help_sim.cpp               # Modern C++17 object-oriented system simulation
+│   ├── safestride_sim.cpp             # Modern C++17 object-oriented system simulation
 │   └── Makefile                       # Build system for C++ simulation
 ├── Hit2Help_Circuit_Schematic.png     # Hardware schematic diagram
 ├── Hit2Help_Block_Diagram.png         # System architecture block diagram
@@ -110,8 +111,8 @@ make run
 ```
 
 ### 2. Flashing the Arduino Firmware
-1. Open [`Hit2Help_Firmware/Hit2Help_Firmware.ino`](Hit2Help_Firmware/Hit2Help_Firmware.ino) in the **Arduino IDE**.
-2. Select Board: **Arduino Uno** and your corresponding serial port.
+1. Open [`SafeStride_Firmware/SafeStride_Firmware.ino`](SafeStride_Firmware/SafeStride_Firmware.ino) in the **Arduino IDE**.
+2. Select Board: **Arduino Uno** and your corresponding serial port (e.g. `/dev/cu.usbmodem*`).
 3. Verify that the `LiquidCrystal` library is installed (standard with Arduino).
 4. Click **Upload** (Ctrl+U / Cmd+U).
 5. Open the **Serial Monitor** at **9600 baud** for live telemetry logging.
